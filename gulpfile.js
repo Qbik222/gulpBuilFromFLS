@@ -2,12 +2,15 @@
 import gulp from "gulp";
 //импорт путей
 import { path } from "./gulp/config/path.js";
+//импорт общих плагинов
+import { plugins } from "./gulp/config/plugins.js";
 
 //передаем значение в глобальную переменную
 
 global.app = {
     path: path,
-    gulp: gulp
+    gulp: gulp,
+    plugins: plugins,
 };
 
 //импорт задач
@@ -24,7 +27,7 @@ function watcher(){
     gulp.watch(path.watch.html, html);
 }
 
-const mainTasks = gulp.parallel(html, copy);
+const mainTasks = gulp.parallel(copy, html);
 
 //построение сценариев выполнения задач
 const dev = gulp.series(reset, mainTasks, watcher);
