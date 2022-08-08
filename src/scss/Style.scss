@@ -1,19 +1,17 @@
 body{
-    background: black;
+    background: black
+    ;
     span {
         color: red;
     }
-   background: url("/Projectgl/src/img/cover.jpg"); 
+}
+
+@media (max-width: 768px)
+{
+    span {font-size: 400px;}
+
 }
 
 @media (max-width: 768px){
-    span{
-        font-size: 30px;
-    }
-}
-
-@media (max-width: 768px){
-    body{
-        background: white;
-    }
+   body  {background: white;}
 }

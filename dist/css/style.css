@@ -1,6 +1,3 @@
-.no-webp body {
-  background: url("/Projectgl/src/../src/img/cover.jpg"); }
-
 body {
   background: black;
 }
@@ -11,12 +8,10 @@ body span {
 
 @media (max-width: 768px) {
   span {
-    font-size: 30px;
+    font-size: 400px;
   }
 
   body {
     background: white;
   }
 }
-
-.webp body { background: url(/Projectgl/src/../src/img/cover.webp); }
