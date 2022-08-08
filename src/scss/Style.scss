@@ -3,4 +3,17 @@ body{
     span {
         color: red;
     }
+   background: url("/Projectgl/src/img/cover.jpg"); 
+}
+
+@media (max-width: 768px){
+    span{
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 768px){
+    body{
+        background: white;
+    }
 }
