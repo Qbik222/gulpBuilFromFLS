@@ -1,6 +1,10 @@
+@import "fonts";
+
+
 body{
     background: black
     ;
+    font-family: BriosoPro Italic;
     span {
         color: red;
     }
@@ -15,3 +19,5 @@ body{
 @media (max-width: 768px){
    body  {background: white;}
 }
+
+
