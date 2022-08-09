@@ -14,7 +14,7 @@ const sass = gulpSass(dartSass);
 
 
 export const scss = () => {
-    return global.app.gulp.src(global.app.path.src.scss, { sourcemaps: true })
+    return global.app.gulp.src(global.app.path.src.scss, { sourcemaps: global.app.isDev })
         .pipe(global.app.plugins.plumber(
         global.app.plugins.notify.onError({
             title: "SCSS",
@@ -25,23 +25,32 @@ export const scss = () => {
         .pipe(sass({
             outputStyle: "expanded"
         }))
-        .pipe(groupCssMediaQueries())
-        .pipe(webpcss(
+        .pipe(global.app.plugins.if(
+            global.app.isBuild,
+            groupCssMediaQueries()))
+        .pipe(global.app.plugins.if(
+            global.app.isBuild,
+            webpcss(
             {
                 webpClass: ".webp",
                 noWebpClass: ".no-webp"
             }
-        ))
-        .pipe(autoprefixer(
+        )))
+        .pipe(global.app.plugins.if(
+            global.app.isBuild,
+            autoprefixer(
             {
                 grid: true,
                 overrideBrowserslist: ["last 3 versions"],
                 cascade: true,
             }
-        ))
+        )))
         .pipe(global.app.gulp.dest(global.app.path.build.css))
-        .pipe(cleanCss())
-        .pipe(rename({
+        .pipe(global.app.plugins.if(
+            global.app.isBuild,
+            cleanCss()))
+        .pipe(
+            rename({
             extname: ".min.css"
         }))
         .pipe(global.app.gulp.dest(global.app.path.build.css))
